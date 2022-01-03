@@ -1,0 +1,15 @@
+[
+    {
+      "name": "ecs-container",
+      "image": "nginx:latest",
+      "cpu": 1,
+      "memory": 256,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 80
+        }
+      ]
+      
+    }
+]

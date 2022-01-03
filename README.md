@@ -1,4 +1,4 @@
-# Ot-ECR-ECS
+# ot-eks-fargate
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/abhiopstree/Ot-ECR-ECS.git
+git remote add origin https://gitlab.com/abhiopstree/ot-eks-farget.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/-/experiment/new_project_readme_content:21b36fa94aa100e24eccc307d96d865c?https://gitlab.com/abhiopstree/Ot-ECR-ECS/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.com/-/experiment/new_project_readme_content:21b36fa94aa100e24eccc307d96d865c?https://gitlab.com/abhiopstree/ot-eks-farget/-/settings/integrations)
 
 ## Collaborate with your team
 
