@@ -82,7 +82,7 @@ resource "aws_route_table" "private_route" {
 resource "aws_route_table_association" "route_association" {
   count          = length(aws_subnet.public_subnet[*].id)
   subnet_id      = aws_subnet.public_subnet[count.index].id
-  route_table_id = aws_route_table.public_route.id #var.route_table_id
+  route_table_id = aws_route_table.public_route.id 
 
 }
 
@@ -90,7 +90,7 @@ resource "aws_route_table_association" "route_association" {
 resource "aws_route_table_association" "route_associations" {
   count          = length(aws_subnet.private_subnet[*].id)
   subnet_id      = aws_subnet.private_subnet[count.index].id
-  route_table_id = aws_route_table.private_route.id #var.route_table_id
+  route_table_id = aws_route_table.private_route.id 
 
 }
 

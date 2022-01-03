@@ -28,10 +28,6 @@ variable "tag" {
   type    = string
 }
 
-# variable "eks_security_group" {
-#   type = string
-# }
-
 variable "eks_security_group_with_cidr_blocks" {
   type = list(any)
   # default     = [{ from_port = 22, to_port = 22, protocol = "tcp", description = "Public Access", cidr_blocks = "0.0.0.0/0" }]

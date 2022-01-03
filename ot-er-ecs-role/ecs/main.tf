@@ -2,7 +2,7 @@
 resource "aws_ecs_capacity_provider" "test" {
   name = "capacity-provider-test"
   auto_scaling_group_provider {
-    auto_scaling_group_arn         = var.auto_scaling_group_arn #aws_autoscaling_group.asg.arn
+    auto_scaling_group_arn         = var.auto_scaling_group_arn 
     managed_termination_protection = "ENABLED"
 
     managed_scaling {
@@ -36,7 +36,7 @@ resource "aws_ecs_service" "service" {
     field = "cpu"
   }
   load_balancer {
-    target_group_arn = var.target_group_arn #aws_lb_target_group.lb_target_group.arn
+    target_group_arn = var.target_group_arn 
     container_name   = "ecs-container"
     container_port   = 80
   }
@@ -45,13 +45,4 @@ resource "aws_ecs_service" "service" {
     ignore_changes = [desired_count]
   }
   launch_type = "EC2"
-  #   depends_on  = [aws_lb_listener.web-listener]
 }
-
-# resource "aws_cloudwatch_log_group" "log_group" {
-#   name = "/ecs/frontend-container"
-#   tags = {
-#     "env"       = "dev"
-#     "createdBy" = "mkerimova"
-#   }
-# }

@@ -1,7 +1,7 @@
 
 resource "aws_security_group" "lb" {
   name   = "allow-all-lb"
-  vpc_id = var.vpc_id #data.aws_vpc.main.id
+  vpc_id = var.vpc_id  
   ingress {
     from_port   = 0
     to_port     = 0
@@ -25,7 +25,7 @@ resource "aws_lb" "test-lb" {
   name               = "test-ecs-lb"
   load_balancer_type = "application"
   internal           = false
-  subnets            = var.public_subnet_id #module.vpc.public_subnets
+  subnets            = var.public_subnet_id 
   tags               = var.tags
   security_groups    = [aws_security_group.lb.id]
 }
@@ -35,7 +35,7 @@ resource "aws_lb_target_group" "lb_target_group" {
   port        = "80"
   protocol    = "HTTP"
   target_type = "instance"
-  vpc_id      = var.vpc_id #data.aws_vpc.main.id
+  vpc_id      = var.vpc_id   
   health_check {
     path                = "/"
     healthy_threshold   = 2
@@ -83,7 +83,7 @@ data "aws_ami" "amazon_linux" {
 resource "aws_security_group" "ec2-sg" {
   name        = "allow-all-ec2"
   description = "allow all"
-  vpc_id      = var.vpc_id #data.aws_vpc.main.id
+  vpc_id      = var.vpc_id 
   ingress {
     from_port   = 0
     to_port     = 0
@@ -107,7 +107,7 @@ resource "aws_launch_configuration" "lc" {
   lifecycle {
     create_before_destroy = true
   }
-  iam_instance_profile        = var.iam_instance_profile #aws_iam_instance_profile.ecs_service_role.name
+  iam_instance_profile        = var.iam_instance_profile  
   key_name                    = var.key_name
   security_groups             = [aws_security_group.ec2-sg.id]
   associate_public_ip_address = true
@@ -126,7 +126,7 @@ resource "aws_autoscaling_group" "asg" {
   desired_capacity          = 3
   health_check_type         = "ELB"
   health_check_grace_period = 300
-  vpc_zone_identifier       = var.public_subnet_id #module.vpc.public_subnets
+  vpc_zone_identifier       = var.public_subnet_id 
 
   target_group_arns     = [aws_lb_target_group.lb_target_group.arn]
   protect_from_scale_in = true
