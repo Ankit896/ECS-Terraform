@@ -21,7 +21,7 @@ resource "aws_ecs_cluster" "web-cluster" {
 # update file container-def, so it's pulling image from ecr
 resource "aws_ecs_task_definition" "task-definition-test" {
   family                = "webfamily"
-  container_definitions = file("/home/abhi/Opstree/OpstreeOpensource/ot-ecs-ecr/ot-ecr-ecs/ot-er-ecs-role/ecs/container-definitions/container-def.json")
+  container_definitions = file("/home/opstree/terraform/ECS/Ot-ECR-ECS/ot-er-ecs-role/ecs/container-definitions/container-def.json")
   network_mode          = "bridge"
   tags                  = var.tags
 }
